@@ -18,3 +18,6 @@ class Post(models.Model):
         """Returns the absolute URL to this blog post."""
         return ('blog:post_detail', (), {'slug': self.slug})
     url = property(get_absolute_url)
+    
+    class Meta:
+        ordering = ('-posted_at',)

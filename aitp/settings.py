@@ -72,7 +72,9 @@ STATICFILES_URL = STATIC_URL = '/static/'
 ADMIN_MEDIA_PREFIX = STATICFILES_URL + 'admin/'
 
 # A list of locations of additional static files
-STATICFILES_DIRS = ()
+STATICFILES_DIRS = (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 # List of finder classes that know how to find static files in
 # various locations.

@@ -59,12 +59,12 @@ MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/static/"
-STATICFILES_ROOT = os.path.join(PROJECT_ROOT, 'var', 'static')
+STATICFILES_ROOT = STATIC_ROOT = os.path.join(PROJECT_ROOT, 'var', 'static')
 
 # URL that handles the static files served from STATICFILES_ROOT.
 # Example: "http://static.lawrence.com/", "http://example.com/static/"
 # Again, you'll want to serve this from a subdomain in production.
-STATICFILES_URL = '/static/'
+STATICFILES_URL = STATIC_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.

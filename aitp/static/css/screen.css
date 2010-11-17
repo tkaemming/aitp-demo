@@ -68,6 +68,19 @@ body.post.detail #comments h3 {
 	border-bottom: 1px solid #eee;
 }
 
+body.post.detail #comments dt {
+	font-size: 12px;
+	color: #444;
+}
+
+body.post.detail #comments dd {
+	margin-bottom: 15px;
+}
+
+body.post.detail #comments h4 {
+	margin-bottom: 10px;
+}
+
 body.post.detail #comments form label {
 	display: block;
 	float: left;

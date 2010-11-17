@@ -1,4 +1,9 @@
+import os
+
 # Django settings for aitp project.
+
+# By using PROJECT_ROOT, we'll have a consistent base for all of our project files.
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -10,13 +15,11 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
+    # We're just going to use SQLite for this project, because it's packaged with Python.
+    # In production, you'll want to use a more robust database, like MySQL or PostgreSQL.
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3',                 # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(PROJECT_ROOT, 'var', 'aitp.db'),   # Or path to database file if using sqlite3.
     }
 }
 
@@ -37,33 +40,36 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = True
+USE_I18N = False
 
 # If you set this to False, Django will not format dates, numbers and
 # calendars according to the current locale
-USE_L10N = True
+USE_L10N = False
 
 # Absolute filesystem path to the directory that will hold user uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'var', 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = ''
+# In production, you'll want to serve this from a subdomain for better performance.
+# See: http://code.google.com/speed/page-speed/docs/rtt.html#ParallelizeDownloads
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/static/"
-STATICFILES_ROOT = ''
+STATICFILES_ROOT = os.path.join(PROJECT_ROOT, 'var', 'static')
 
 # URL that handles the static files served from STATICFILES_ROOT.
 # Example: "http://static.lawrence.com/", "http://example.com/static/"
+# Again, you'll want to serve this from a subdomain in production.
 STATICFILES_URL = '/static/'
 
 # URL prefix for admin media -- CSS, JavaScript and images.
 # Make sure to use a trailing slash.
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
-ADMIN_MEDIA_PREFIX = '/static/admin/'
+ADMIN_MEDIA_PREFIX = STATICFILES_URL + 'admin/'
 
 # A list of locations of additional static files
 STATICFILES_DIRS = ()
@@ -97,22 +103,19 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'aitp.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, 'templates'),
 )
 
 INSTALLED_APPS = (
+    'django.contrib.admin',
+    'django.contrib.admindocs',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
+    'aitp',
 )
 
 # A sample logging configuration. The only tangible logging

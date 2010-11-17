@@ -5,6 +5,13 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(
+        regex  = r'^$',
+        view   = 'django.views.generic.simple.redirect_to',
+        kwargs = {
+            'url': '/blog/',
+        }
+    ),
+    url(
         regex = r'^blog/',
         view  = include('aitp.blog.urls', namespace='blog'),
     ),

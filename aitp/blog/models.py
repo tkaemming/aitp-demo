@@ -12,3 +12,9 @@ class Post(models.Model):
     def __unicode__(self):
         # Notice that you have to explicitly pass "self" to any instance methods.
         return '%s' % self.title
+    
+    @models.permalink
+    def get_absolute_url(self):
+        """Returns the absolute URL to this blog post."""
+        return ('blog:post_detail', (), {'slug': self.slug})
+    url = property(get_absolute_url)

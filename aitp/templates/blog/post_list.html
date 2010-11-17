@@ -11,7 +11,7 @@
     <ul>
         {% for post in object_list %}
             <li>
-                {{ post.title }}, at {{ post.posted_at }} by {{ post.author }}
+                <a href="{{ post.url }}">{{ post.title }}</a>, at {{ post.posted_at }} by {{ post.author }}
             </li>
         {% endfor %}
     </ul>

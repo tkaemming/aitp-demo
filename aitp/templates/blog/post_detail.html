@@ -1,5 +1,7 @@
 {% extends "blog/base.html" %}
 
+{% load markup %}
+
 {% block title %}{{ object.title }}{% endblock %}
 
 {% block bodyclass %}{{ block.super }} post detail post-{{ object.slug }}{% endblock %}
@@ -17,7 +19,7 @@
     
     <div class="content">
         
-        {{ object.content }}
+        {{ object.content|markdown }}
         
     </div>
     

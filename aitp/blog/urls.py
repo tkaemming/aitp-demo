@@ -1,4 +1,5 @@
 from django.conf.urls.defaults import *
+from aitp.blog.feeds import LatestNewsFeed
 
 urlpatterns = patterns('',
     url(
@@ -10,5 +11,10 @@ urlpatterns = patterns('',
         regex = r'^(?P<slug>[\w-]+)/$',
         view  = 'aitp.blog.views.post_detail',
         name  = 'post_detail',
+    ),
+    url(
+        regex = r'^rss.xml$',
+        view  = LatestNewsFeed(),
+        name  = 'rss',
     ),
 )

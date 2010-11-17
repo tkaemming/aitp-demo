@@ -30,7 +30,10 @@
         
         {% render_comment_list for object %}
         
-        {% render_comment_form for object %}
+        {% get_comment_form for object as form %}
+        {% with object.url as next %}
+            {% include "comments/form.html" %}
+        {% endwith %}
         
     </div>
     

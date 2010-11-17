@@ -5,6 +5,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(
+        regex = r'^blog/',
+        view  = include('aitp.blog.urls', namespace='blog'),
+    ),
+    url(
         regex = r'^admin/doc/', 
         view  = include('django.contrib.admindocs.urls')
     ),

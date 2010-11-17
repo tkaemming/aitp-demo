@@ -1,0 +1,24 @@
+{% extends "blog/base.html" %}
+
+{% block title %}{{ object.title }}{% endblock %}
+
+{% block bodyclass %}{{ block.super }} post detail post-{{ object.slug }}{% endblock %}
+
+{% block content %}
+    
+    <h2>Blog Post: {{ object.title }}</h2>
+    
+    <dl class="meta">
+        <dt>Post Date</dt>
+        <dd>{{ object.posted_at }}</dd>
+        <dt>Author</dt>
+        <dd>{{ object.author }}</dd>
+    </dl>
+    
+    <div class="content">
+        
+        {{ object.content }}
+        
+    </div>
+    
+{% endblock %}

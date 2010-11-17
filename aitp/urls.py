@@ -16,6 +16,10 @@ urlpatterns = patterns('',
         view  = include('aitp.blog.urls', namespace='blog'),
     ),
     url(
+        regex = r'^comments/', 
+        view  = include('django.contrib.comments.urls')
+    ),
+    url(
         regex = r'^admin/doc/', 
         view  = include('django.contrib.admindocs.urls')
     ),

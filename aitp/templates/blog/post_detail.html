@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %}
 
+{% load comments %}
 {% load markup %}
 
 {% block title %}{{ object.title }}{% endblock %}
@@ -20,6 +21,16 @@
     <div class="content">
         
         {{ object.content|markdown }}
+        
+    </div>
+    
+    <div id="comments">
+        
+        <h3>Comments</h3>
+        
+        {% render_comment_list for object %}
+        
+        {% render_comment_form for object %}
         
     </div>
     
